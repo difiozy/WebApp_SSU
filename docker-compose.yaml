@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+
+  postgres:
+    image: postgres:13.3
+    container_name: "postgres"
+    environment:
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "pass"
+    ports:
+      - "5432:5432"
+
+  mvc:
+    build: ssu.web
+    container_name: "app_mvc"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=pass
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - rabbitmq
+
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
