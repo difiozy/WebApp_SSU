@@ -1,6 +1,6 @@
 create table t_user
 (
-    user_id integer not null
+    user_id integer generated always as identity
         constraint t_user_pk
             primary key,
     sso     varchar not null
