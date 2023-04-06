@@ -10,6 +10,17 @@ services:
     ports:
       - "5432:5432"
 
+  telegram_bot:
+    build: bot.telegram
+    container_name: "telegram_bot"
+    ports:
+      - "9090:9090"
+    depends_on:
+      - rabbitmq
+    environment:
+      - TELEGRAM_BOT_TOKEN=${BOT_TOKEN}
+      - TELEGRAM_BOT_NAME=${BOT_NAME}
+
   mvc:
     build: ssu.web
     container_name: "app_mvc"

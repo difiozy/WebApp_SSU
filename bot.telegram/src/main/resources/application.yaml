@@ -1,0 +1,12 @@
+server:
+  port: 9090
+spring:
+  telegram:
+    bot:
+      name: ${TELEGRAM_BOT_NAME}
+      token: ${TELEGRAM_BOT_TOKEN}
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
