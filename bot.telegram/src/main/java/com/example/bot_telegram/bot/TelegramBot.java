@@ -79,7 +79,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                     Ваши учетные даные:
                     login: %s
                     token: %s
-                    """, userNew.getName(), userNew.getToken());
+                    """, userNew.getSso(), userNew.getToken());
         } else
             response = "Сообщение не распознано необходимо ввести логин длиной от 3 до 32 символов английского алфавита, цифр или \"_\" без пробелов и переноса строк";
 
@@ -88,7 +88,7 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     private UserNew generateToken(String userName) {
         UserNew userNew = new UserNew()
-                .setName(userName)
+                .setSso(userName)
                 .setToken(UUID.randomUUID().toString());
         rabbitService.userToken(userNew);
         return userNew;
@@ -98,7 +98,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     @Setter
     @Accessors(chain = true)
     public static class UserNew {
-        private String name;
+        private String sso;
         private String token;
     }
 }
