@@ -20,6 +20,7 @@ services:
     environment:
       - TELEGRAM_BOT_TOKEN=${BOT_TOKEN}
       - TELEGRAM_BOT_NAME=${BOT_NAME}
+      - RABBIT_HOST=${RABBIT_HOST_ENV}
 
   mvc:
     build: ssu.web
@@ -28,6 +29,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres
       - SPRING_DATASOURCE_USERNAME=user
       - SPRING_DATASOURCE_PASSWORD=pass
+      - RABBIT_HOST=${RABBIT_HOST_ENV}
     ports:
       - "8080:8080"
     depends_on:
@@ -36,6 +38,7 @@ services:
 
   rabbitmq:
     image: rabbitmq:management
+    container_name: "rabbitmq"
     ports:
       - "5672:5672"
       - "15672:15672"

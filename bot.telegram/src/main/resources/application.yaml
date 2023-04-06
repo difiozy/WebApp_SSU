@@ -6,7 +6,7 @@ spring:
       name: ${TELEGRAM_BOT_NAME}
       token: ${TELEGRAM_BOT_TOKEN}
   rabbitmq:
-    host: localhost
+    host: ${RABBIT_HOST}
     port: 5672
     username: guest
     password: guest

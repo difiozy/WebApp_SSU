@@ -1,12 +1,10 @@
 create table t_user
 (
-    user_id integer generated always as identity
+    sso   varchar not null
         constraint t_user_pk
             primary key,
-    sso     varchar not null
-        constraint t_user_sso_uq
-            unique,
-    name    varchar
+    name  varchar,
+    token varchar
 );
 
 alter table t_user

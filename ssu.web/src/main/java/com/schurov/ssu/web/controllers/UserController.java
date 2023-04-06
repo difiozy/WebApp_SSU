@@ -20,4 +20,9 @@ public class UserController {
     public User getUserBySso(@PathVariable("sso") String sso) {
         return userRepository.findBySso(sso);
     }
+
+    @GetMapping("/ok")
+    public String ok() {
+        return "ok";
+    }
 }
