@@ -6,3 +6,9 @@ spring:
     port: 5672
     username: guest
     password: guest
+  data:
+    redis:
+      repositories:
+        enabled: false
+      host: ${REDIS_HOST}
+      password: ${REDIS_PASSWORD}
