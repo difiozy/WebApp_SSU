@@ -10,6 +10,8 @@ import org.springframework.data.domain.Persistable;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.time.LocalDateTime;
+
 @Table("t_user")
 @Getter
 @Setter
@@ -22,6 +24,8 @@ public class User implements Persistable<String> {
     private String name;
     @Column("token")
     private String token;
+    @Column("dt_expire_token")
+    private LocalDateTime expireTokenDate;
 
     @Transient
     private Boolean nev;
