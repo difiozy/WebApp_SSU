@@ -4,6 +4,7 @@ import com.schurov.ssu.web.data.cache.UserCacheRepository;
 import com.schurov.ssu.web.data.repositories.UserRepository;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class ExpireTokenJob {
     }
 
     @Scheduled(fixedDelay = 1000)
+    @Transactional
     public void deleteExpireTokens() {
         List<String> expireTokenSso = userRepository.getExpireTokenSso();
         if (expireTokenSso.isEmpty()) {
