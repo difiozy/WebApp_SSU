@@ -12,3 +12,6 @@ spring:
         enabled: false
       host: ${REDIS_HOST}
       password: ${REDIS_PASSWORD}
+  mvc:
+    view:
+      suffix: .html
