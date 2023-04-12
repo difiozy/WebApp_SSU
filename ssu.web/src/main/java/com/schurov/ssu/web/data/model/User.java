@@ -24,9 +24,12 @@ public class User implements Persistable<String> {
     private String name;
     @Column("token")
     private String token;
+    @Column("dt_expire_token")
+    private Object dateExpireToken;
 
     @Transient
     private Boolean nev;
+
     @Override
     public String getId() {
         return sso;

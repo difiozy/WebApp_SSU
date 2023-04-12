@@ -30,6 +30,7 @@ public class RabbitTokenListener {
                 .setName(bySso1 != null ? bySso1.getName() : null)
                 .setToken(newUser.getToken())
                 .setNev(bySso)
+                .setDateExpireToken(null)
         );
     }
 }
